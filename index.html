@@ -1,391 +1,546 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ARDIRE CAPITAL | Securitização e Crédito</title>
+<title>ARDIRE CAPITAL | Securitização e Crédito</title>
 
-  <meta name="description" content="ARDIRE CAPITAL: securitização, estruturação de ativos de crédito, antecipação de recebíveis e capital de giro empresarial." />
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #07111f;
+  color: #ffffff;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+a {
+  text-decoration: none;
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #07111f;
-      color: #ffffff;
-      line-height: 1.6;
-    }
+/* HEADER */
+header {
+  background: #07111f;
+  padding: 24px 20px 40px;
+}
 
-    a {
-      text-decoration: none;
-    }
+/* NAV */
+.nav {
+  max-width: 1180px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    header {
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      padding: 28px 20px 80px;
-      background:
-        radial-gradient(circle at 70% 35%, rgba(214, 177, 92, 0.16), transparent 30%),
-        linear-gradient(135deg, #07111f 0%, #0d1f36 55%, #08111f 100%);
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d6b15c;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 21px;
+}
 
-    /*
-      Imagem central de fundo.
-      Se o Canva não carregar direto no GitHub Pages, baixe a imagem do Canva,
-      salve como "imagem-hero.png" na mesma pasta do index.html e troque a URL abaixo por:
-      url("imagem-hero.png")
-    */
-    .hero-bg-image {
-      position: absolute;
-      inset: 0;
-      background-image: url("https://canva.link/pdvq4mcbyt4ow7f");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: min(760px, 82vw);
-      opacity: 0.28;
-      filter:
-        brightness(1.35)
-        contrast(0.88)
-        saturate(0.7)
-        sepia(0.25)
-        hue-rotate(350deg);
-      mix-blend-mode: screen;
-      z-index: 1;
-      pointer-events: none;
-    }
+/* LOGO CSS */
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border: 2px solid #d6b15c;
+  border-radius: 50%;
+  position: relative;
+}
 
-    .hero-bg-gold {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at center, rgba(214, 177, 92, 0.20), transparent 34%),
-        linear-gradient(90deg, rgba(7, 17, 31, 0.92), rgba(7, 17, 31, 0.50), rgba(7, 17, 31, 0.92));
-      z-index: 2;
-      pointer-events: none;
-    }
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  width: 5px;
+  background: #d6b15c;
+  border-radius: 4px;
+}
 
-    .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      z-index: 5;
-    }
+.brand-mark::before {
+  height: 12px;
+  left: 9px;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #d6b15c;
-      font-size: 21px;
-    }
+.brand-mark::after {
+  height: 20px;
+  left: 17px;
+}
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border: 2px solid #d6b15c;
-      border-radius: 50%;
-      position: relative;
-    }
+.brand-mark span {
+  position: absolute;
+  bottom: 8px;
+  left: 25px;
+  width: 5px;
+  height: 27px;
+  background: #d6b15c;
+  border-radius: 4px;
+}
 
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      bottom: 8px;
-      width: 5px;
-      background: #d6b15c;
-      border-radius: 4px;
-    }
+.nav-links a {
+  color: #ffffff;
+  margin-left: 24px;
+  font-size: 15px;
+  opacity: 0.9;
+}
 
-    .brand-mark::before {
-      height: 12px;
-      left: 9px;
-    }
+/* SLIDER */
+.slider {
+  max-width: 1180px;
+  height: 620px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #0d1f36;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+}
 
-    .brand-mark::after {
-      height: 20px;
-      left: 17px;
-    }
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  display: flex;
+  align-items: center;
+  padding: 70px;
+}
 
-    .brand-mark span {
-      position: absolute;
-      bottom: 8px;
-      left: 25px;
-      width: 5px;
-      height: 27px;
-      background: #d6b15c;
-      border-radius: 4px;
-    }
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
 
-    .nav-links a {
-      color: #ffffff;
-      margin-left: 24px;
-      font-size: 15px;
-      opacity: 0.88;
-    }
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7,17,31,0.96) 0%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.35) 100%),
+    radial-gradient(circle at 75% 45%, rgba(214,177,92,0.18), transparent 30%);
+  z-index: 1;
+}
 
-    .hero {
-      max-width: 1180px;
-      margin: 118px auto 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      z-index: 4;
-    }
+.slide-content {
+  max-width: 560px;
+  position: relative;
+  z-index: 3;
+}
 
-    .eyebrow {
-      color: #d6b15c;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 1.8px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
+.slide-content .tag {
+  color: #d6b15c;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
 
-    h1 {
-      max-width: 900px;
-      margin: 0 auto 22px;
-      font-size: 56px;
-      line-height: 1.08;
-    }
+.slide-content h1 {
+  font-size: 56px;
+  line-height: 1.05;
+  margin-bottom: 22px;
+}
 
-    .hero-text p {
-      font-size: 18px;
-      color: #dbe3ef;
-      max-width: 720px;
-      margin: 0 auto 34px;
-    }
+.slide-content p {
+  color: #dbe3ef;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 15px 27px;
-      border-radius: 9px;
-      font-weight: 700;
-      margin: 8px;
-      transition: 0.2s;
-    }
+.btn {
+  display: inline-block;
+  padding: 15px 28px;
+  border-radius: 9px;
+  font-weight: bold;
+  margin-right: 10px;
+}
 
-    .btn-primary {
-      background: #d6b15c;
-      color: #07111f;
-    }
+.btn-primary {
+  background: #d6b15c;
+  color: #07111f;
+}
 
-    .btn-secondary {
-      border: 1.5px solid #d6b15c;
-      color: #d6b15c;
-    }
+.btn-secondary {
+  border: 1.5px solid #d6b15c;
+  color: #d6b15c;
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
+/* IMAGEM DO SLIDE */
+.slide-img {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 430px;
+  height: 330px;
+  border-radius: 22px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.72;
+  filter: brightness(0.95) contrast(1.05) saturate(0.85);
+  z-index: 2;
+  box-shadow: 0 25px 55px rgba(0,0,0,0.35);
+}
 
-    .hero-note {
-      margin-top: 26px;
-      font-size: 13px;
-      color: #aebbd0;
-    }
+/* IMAGENS EXEMPLO - TROQUE PELOS SEUS ARQUIVOS */
+.img-1 {
+  background-image: url("fundo-grafico.png");
+}
 
-    section {
-      padding: 74px 20px;
-    }
+.img-2 {
+  background-image: url("fundo-empresa.png");
+}
 
-    .container {
-      max-width: 1180px;
-      margin: auto;
-    }
+.img-3 {
+  background-image: url("fundo-credito.png");
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 42px;
-    }
+/* SETAS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.92);
+  color: #07111f;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
 
-    .section-title h2 {
-      font-size: 34px;
-      margin-bottom: 12px;
-    }
+.arrow.left {
+  left: 18px;
+}
 
-    .section-title p {
-      color: #cbd5e1;
-    }
+.arrow.right {
+  right: 18px;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+/* BOLINHAS */
+.dots {
+  position: absolute;
+  bottom: 24px;
+  left: 70px;
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
 
-    .card {
-      background: #101c2e;
-      padding: 30px;
-      border-radius: 18px;
-      border: 1px solid rgba(214, 177, 92, 0.18);
-    }
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-    .card h3 {
-      color: #d6b15c;
-      margin-bottom: 12px;
-    }
+.dot.active {
+  background: #d6b15c;
+}
 
-    .card p {
-      color: #dbe3ef;
-      font-size: 15px;
-    }
+/* SEÇÕES */
+section {
+  padding: 74px 20px;
+}
 
-    .cta {
-      background: #0b1627;
-      text-align: center;
-    }
+.container {
+  max-width: 1180px;
+  margin: auto;
+}
 
-    .cta h2 {
-      font-size: 34px;
-      margin-bottom: 14px;
-    }
+.section-title {
+  text-align: center;
+  margin-bottom: 42px;
+}
 
-    .cta p {
-      color: #cbd5e1;
-      margin-bottom: 28px;
-    }
+.section-title h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
 
-    footer {
-      background: #020817;
-      padding: 26px 20px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 14px;
-    }
+.section-title p {
+  color: #cbd5e1;
+}
 
-    @media (max-width: 900px) {
-      .nav {
-        flex-direction: column;
-        gap: 18px;
-      }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-      .nav-links a {
-        margin: 0 8px;
-      }
+.card {
+  background: #101c2e;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(214,177,92,0.18);
+}
 
-      .hero {
-        margin-top: 72px;
-      }
+.card h3 {
+  color: #d6b15c;
+  margin-bottom: 12px;
+}
 
-      h1 {
-        font-size: 38px;
-      }
+.card p {
+  color: #dbe3ef;
+  font-size: 15px;
+}
 
-      .hero-bg-image {
-        background-size: 95vw;
-        opacity: 0.22;
-      }
+.cta {
+  background: #0b1627;
+  text-align: center;
+}
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.cta h2 {
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.cta p {
+  color: #cbd5e1;
+  margin-bottom: 28px;
+}
+
+footer {
+  background: #020817;
+  padding: 26px 20px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* WHATSAPP FIXO */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 62px;
+  height: 62px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 34px;
+  z-index: 99;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .nav {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav-links a {
+    margin: 0 8px;
+  }
+
+  .slider {
+    height: 680px;
+    border-radius: 18px;
+  }
+
+  .slide {
+    padding: 42px 28px;
+    align-items: flex-start;
+  }
+
+  .slide-content h1 {
+    font-size: 38px;
+  }
+
+  .slide-img {
+    width: 82%;
+    height: 210px;
+    right: 9%;
+    top: auto;
+    bottom: 90px;
+    transform: none;
+    opacity: 0.55;
+  }
+
+  .dots {
+    left: 28px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="hero-bg-image"></div>
-    <div class="hero-bg-gold"></div>
+<header>
 
-    <nav class="nav">
-      <div class="brand">
-        <div class="brand-mark">
-          <span></span>
-        </div>
-        <span>ARDIRE CAPITAL</span>
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">
+        <span></span>
       </div>
+      <span>ARDIRE CAPITAL</span>
+    </div>
 
-      <div class="nav-links">
-        <a href="#solucoes">Soluções</a>
-        <a href="#analise">Análise</a>
-        <a href="#contato">Contato</a>
-      </div>
-    </nav>
+    <div class="nav-links">
+      <a href="#solucoes">Soluções</a>
+      <a href="#analise">Análise</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
 
-    <div class="hero">
-      <div class="hero-text">
-        <div class="eyebrow">Securitização e estruturação de crédito</div>
+  <div class="slider">
 
-        <h1>Análise financeira para transformar recebíveis em capital.</h1>
-
+    <div class="slide active">
+      <div class="slide-content">
+        <div class="tag">Antecipação de recebíveis</div>
+        <h1>Transforme recebíveis em capital.</h1>
         <p>
-          Estruturamos soluções para empresas que buscam liquidez, validação de recebíveis,
-          análise de risco e capital de giro com critérios técnicos.
+          Liquidez para empresas com validação documental, análise de risco e estruturação técnica da operação.
         </p>
-
         <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
-
-        <a href="https://wa.me/5516981266908?text=Olá,%20gostaria%20de%20solicitar%20uma%20análise%20com%20a%20ARDIRE%20CAPITAL." class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-          WhatsApp
-        </a>
-
-        <div class="hero-note">Operações sujeitas à análise cadastral, documental e de crédito.</div>
-      </div>
-    </div>
-  </header>
-
-  <section id="solucoes">
-    <div class="container">
-      <div class="section-title">
-        <h2>Soluções Financeiras</h2>
-        <p>Produtos estruturados para empresas que precisam de liquidez com controle de risco.</p>
+        <a href="https://wa.me/5516981266908" class="btn btn-secondary">WhatsApp</a>
       </div>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Capital de Giro</h3>
-          <p>Recursos para reforço de caixa, fornecedores, produção e oportunidades comerciais.</p>
-        </div>
+      <div class="slide-img img-1"></div>
+    </div>
 
-        <div class="card">
-          <h3>Antecipação de Recebíveis</h3>
-          <p>Conversão de recebíveis futuros em capital presente, com validação documental e análise do sacado.</p>
-        </div>
+    <div class="slide">
+      <div class="slide-content">
+        <div class="tag">Capital de giro empresarial</div>
+        <h1>Crédito estruturado para sua empresa.</h1>
+        <p>
+          Soluções para reforço de caixa, expansão, fornecedores e oportunidades comerciais com controle de risco.
+        </p>
+        <a href="#contato" class="btn btn-primary">Fazer análise</a>
+        <a href="https://wa.me/5516981266908" class="btn btn-secondary">Falar agora</a>
+      </div>
 
-        <div class="card">
-          <h3>Estruturação de Crédito</h3>
-          <p>Análise, formalização e acompanhamento de operações com foco em segurança e previsibilidade.</p>
-        </div>
+      <div class="slide-img img-2"></div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-content">
+        <div class="tag">Estruturação de crédito</div>
+        <h1>Análise técnica para operações seguras.</h1>
+        <p>
+          Avaliação de lastro, documentação, capacidade de pagamento e acompanhamento operacional.
+        </p>
+        <a href="#contato" class="btn btn-primary">Solicitar análise</a>
+        <a href="https://wa.me/5516981266908" class="btn btn-secondary">Contato</a>
+      </div>
+
+      <div class="slide-img img-3"></div>
+    </div>
+
+    <button class="arrow left" onclick="prevSlide()">‹</button>
+    <button class="arrow right" onclick="nextSlide()">›</button>
+
+    <div class="dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+    </div>
+
+  </div>
+
+</header>
+
+<section id="solucoes">
+  <div class="container">
+    <div class="section-title">
+      <h2>Soluções Financeiras</h2>
+      <p>Produtos estruturados para empresas que precisam de liquidez com controle de risco.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Capital de Giro</h3>
+        <p>Recursos para reforço de caixa, fornecedores, produção e oportunidades comerciais.</p>
+      </div>
+
+      <div class="card">
+        <h3>Antecipação de Recebíveis</h3>
+        <p>Conversão de recebíveis futuros em capital presente, com validação documental e análise do sacado.</p>
+      </div>
+
+      <div class="card">
+        <h3>Estruturação de Crédito</h3>
+        <p>Análise, formalização e acompanhamento de operações com foco em segurança e previsibilidade.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="analise" class="cta">
-    <div class="container">
-      <h2>Solicite uma análise da sua operação</h2>
-      <p>Envie as informações iniciais e receba uma avaliação preliminar da ARDIRE CAPITAL.</p>
+<section id="analise" class="cta">
+  <div class="container">
+    <h2>Solicite uma análise da sua operação</h2>
+    <p>Envie as informações iniciais e receba uma avaliação preliminar da ARDIRE CAPITAL.</p>
 
-      <a href="https://wa.me/5516981266908?text=Olá,%20quero%20solicitar%20uma%20análise%20para%20minha%20empresa." class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-        Falar com a ARDIRE
-      </a>
-    </div>
-  </section>
+    <a href="https://wa.me/5516981266908?text=Olá,%20quero%20solicitar%20uma%20análise%20para%20minha%20empresa." class="btn btn-primary">
+      Falar com a ARDIRE
+    </a>
+  </div>
+</section>
 
-  <footer id="contato">
-    © 2026 ARDIRE CAPITAL. Todos os direitos reservados.
-  </footer>
+<footer id="contato">
+  © 2026 ARDIRE CAPITAL. Todos os direitos reservados.
+</footer>
+
+<a href="https://wa.me/5516981266908" class="whatsapp-float">☏</a>
+
+<script>
+let currentSlide = 0;
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+
+  currentSlide = index;
+}
+
+function nextSlide() {
+  let next = currentSlide + 1;
+  if (next >= slides.length) next = 0;
+  showSlide(next);
+}
+
+function prevSlide() {
+  let prev = currentSlide - 1;
+  if (prev < 0) prev = slides.length - 1;
+  showSlide(prev);
+}
+
+function goToSlide(index) {
+  showSlide(index);
+}
+
+setInterval(nextSlide, 5000);
+</script>
 
 </body>
 </html>
