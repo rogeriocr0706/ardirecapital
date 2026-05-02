@@ -1,4 +1,3 @@
-[preview (7).html](https://github.com/user-attachments/files/27307125/preview.7.html)
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
