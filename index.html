@@ -541,6 +541,15 @@ function goToSlide(index) {
 
 setInterval(nextSlide, 5000);
 </script>
+@media (max-width: 768px) {
+  .arrow {
+    display: none !important;
+  }
 
+  .dots {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 </body>
 </html>
