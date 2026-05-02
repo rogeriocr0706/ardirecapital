@@ -4,73 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ARDIRE CAPITAL | Soluções Financeiras</title>
+  <title>ARDIRE CAPITAL | Securitização e Crédito</title>
 
-  <meta name="description" content="ARDIRE CAPITAL: soluções em capital de giro, antecipação de recebíveis e crédito empresarial para empresas." />
+  <meta name="description" content="ARDIRE CAPITAL: securitização, estruturação de ativos de crédito, antecipação de recebíveis e capital de giro empresarial." />
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: #07111f;
       color: #ffffff;
       line-height: 1.6;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     header {
-      background: linear-gradient(135deg, #07111f, #0f253f, #173b5c);
-      padding: 24px 20px 90px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      padding: 28px 20px 80px;
+      background:
+        radial-gradient(circle at 70% 35%, rgba(214, 177, 92, 0.16), transparent 30%),
+        linear-gradient(135deg, #07111f 0%, #0d1f36 55%, #08111f 100%);
     }
 
-    nav {
-      max-width: 1100px;
-      margin: auto;
+    /*
+      Imagem central de fundo.
+      Se o Canva não carregar direto no GitHub Pages, baixe a imagem do Canva,
+      salve como "imagem-hero.png" na mesma pasta do index.html e troque a URL abaixo por:
+      url("imagem-hero.png")
+    */
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://canva.link/pdvq4mcbyt4ow7f");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: min(760px, 82vw);
+      opacity: 0.28;
+      filter:
+        brightness(1.35)
+        contrast(0.88)
+        saturate(0.7)
+        sepia(0.25)
+        hue-rotate(350deg);
+      mix-blend-mode: screen;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-bg-gold {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(214, 177, 92, 0.20), transparent 34%),
+        linear-gradient(90deg, rgba(7, 17, 31, 0.92), rgba(7, 17, 31, 0.50), rgba(7, 17, 31, 0.92));
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 80px;
+      justify-content: space-between;
+      position: relative;
+      z-index: 5;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
       letter-spacing: 2px;
       color: #d6b15c;
+      font-size: 21px;
     }
 
-    nav a {
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border: 2px solid #d6b15c;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      width: 5px;
+      background: #d6b15c;
+      border-radius: 4px;
+    }
+
+    .brand-mark::before {
+      height: 14px;
+      left: 11px;
+    }
+
+    .brand-mark::after {
+      height: 23px;
+      left: 21px;
+    }
+
+    .nav-links a {
       color: #ffffff;
-      text-decoration: none;
-      margin-left: 22px;
+      margin-left: 24px;
       font-size: 15px;
-      opacity: 0.9;
+      opacity: 0.88;
     }
 
     .hero {
-      max-width: 900px;
-      margin: auto;
+      max-width: 1180px;
+      margin: 118px auto 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
       text-align: center;
+      position: relative;
+      z-index: 4;
     }
 
-    .hero h1 {
-      font-size: 46px;
-      margin: 18px 0;
+    .eyebrow {
+      color: #d6b15c;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1.8px;
+      font-weight: 700;
+      margin-bottom: 18px;
     }
 
-    .hero p {
-      font-size: 19px;
-      opacity: 0.88;
-      margin-bottom: 34px;
+    h1 {
+      max-width: 900px;
+      margin: 0 auto 22px;
+      font-size: 56px;
+      line-height: 1.08;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #dbe3ef;
+      max-width: 720px;
+      margin: 0 auto 34px;
     }
 
     .btn {
       display: inline-block;
-      padding: 15px 28px;
+      padding: 15px 27px;
+      border-radius: 9px;
+      font-weight: 700;
       margin: 8px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+      transition: 0.2s;
     }
 
     .btn-primary {
@@ -79,15 +179,42 @@
     }
 
     .btn-secondary {
-      border: 2px solid #d6b15c;
+      border: 1.5px solid #d6b15c;
       color: #d6b15c;
     }
 
-    section { padding: 70px 20px; }
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .hero-note {
+      margin-top: 26px;
+      font-size: 13px;
+      color: #aebbd0;
+    }
+
+    section {
+      padding: 74px 20px;
+    }
 
     .container {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
     }
 
     .cards {
@@ -98,72 +225,155 @@
 
     .card {
       background: #101c2e;
-      padding: 28px;
-      border-radius: 14px;
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(214, 177, 92, 0.18);
+    }
+
+    .card h3 {
+      color: #d6b15c;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #dbe3ef;
+      font-size: 15px;
+    }
+
+    .cta {
+      background: #0b1627;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      margin-bottom: 28px;
     }
 
     footer {
       background: #020817;
       padding: 26px 20px;
       text-align: center;
-      font-size: 14px;
       color: #94a3b8;
+      font-size: 14px;
     }
 
-    @media (max-width: 768px) {
-      .cards { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 32px; }
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-links a {
+        margin: 0 8px;
+      }
+
+      .hero {
+        margin-top: 72px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .hero-bg-image {
+        background-size: 95vw;
+        opacity: 0.22;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <div class="logo">ARDIRE CAPITAL</div>
-    <div>
-      <a href="#solucoes">Soluções</a>
-      <a href="#contato">Contato</a>
-    </div>
-  </nav>
+  <header>
+    <div class="hero-bg-image"></div>
+    <div class="hero-bg-gold"></div>
 
-  <div class="hero">
-    <h1>Capital inteligente para seu negócio</h1>
-    <p>Antecipação de recebíveis, capital de giro e crédito empresarial.</p>
-
-    <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
-
-    <a href="https://wa.me/5516981266908" class="btn btn-secondary" target="_blank">
-      WhatsApp
-    </a>
-  </div>
-</header>
-
-<section id="solucoes">
-  <div class="container">
-    <div class="cards">
-      <div class="card">
-        <h3>Capital de Giro</h3>
-        <p>Recursos para reforçar o caixa da empresa.</p>
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <span>ARDIRE CAPITAL</span>
       </div>
 
-      <div class="card">
-        <h3>Antecipação</h3>
-        <p>Transforme recebíveis em dinheiro imediato.</p>
+      <div class="nav-links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#analise">Análise</a>
+        <a href="#contato">Contato</a>
       </div>
+    </nav>
 
-      <div class="card">
-        <h3>Crédito Empresarial</h3>
-        <p>Soluções estruturadas conforme o seu perfil.</p>
+    <div class="hero">
+      <div class="hero-text">
+        <div class="eyebrow">Securitização e estruturação de crédito</div>
+
+        <h1>Análise financeira para transformar recebíveis em capital.</h1>
+
+        <p>
+          Estruturamos soluções para empresas que buscam liquidez, validação de recebíveis,
+          análise de risco e capital de giro com critérios técnicos.
+        </p>
+
+        <a href="#contato" class="btn btn-primary">Solicitar Proposta</a>
+
+        <a href="https://wa.me/5516981266908?text=Olá,%20gostaria%20de%20solicitar%20uma%20análise%20com%20a%20ARDIRE%20CAPITAL." class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          WhatsApp
+        </a>
+
+        <div class="hero-note">Operações sujeitas à análise cadastral, documental e de crédito.</div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  © 2026 ARDIRE CAPITAL
-</footer>
+  <section id="solucoes">
+    <div class="container">
+      <div class="section-title">
+        <h2>Soluções Financeiras</h2>
+        <p>Produtos estruturados para empresas que precisam de liquidez com controle de risco.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Capital de Giro</h3>
+          <p>Recursos para reforço de caixa, fornecedores, produção e oportunidades comerciais.</p>
+        </div>
+
+        <div class="card">
+          <h3>Antecipação de Recebíveis</h3>
+          <p>Conversão de recebíveis futuros em capital presente, com validação documental e análise do sacado.</p>
+        </div>
+
+        <div class="card">
+          <h3>Estruturação de Crédito</h3>
+          <p>Análise, formalização e acompanhamento de operações com foco em segurança e previsibilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="analise" class="cta">
+    <div class="container">
+      <h2>Solicite uma análise da sua operação</h2>
+      <p>Envie as informações iniciais e receba uma avaliação preliminar da ARDIRE CAPITAL.</p>
+
+      <a href="https://wa.me/5516981266908?text=Olá,%20quero%20solicitar%20uma%20análise%20para%20minha%20empresa." class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Falar com a ARDIRE
+      </a>
+    </div>
+  </section>
+
+  <footer id="contato">
+    © 2026 ARDIRE CAPITAL. Todos os direitos reservados.
+  </footer>
 
 </body>
 </html>
