@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARDIRE | Grupo Empresarial Financeiro</title>
+
+  <style>
+    :root {
+      --navy: #071526;
+      --navy-2: #0b1f36;
+      --navy-3: #102a46;
+      --gold: #c8a96a;
+      --gold-2: #e1c98f;
+      --white: #ffffff;
+      --muted: #c9d3df;
+      --light: #f5f7fa;
+      --dark: #050b12;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(7, 21, 38, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .menu {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .menu a {
+      font-size: 0.92rem;
+      color: var(--muted);
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--gold);
+    }
+
+    .nav-btn {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+    }
+
+    .hamburger {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 110px;
+      background:
+        linear-gradient(rgba(7,21,38,0.86), rgba(7,21,38,0.92)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80")
+        center/cover no-repeat;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.13rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(200,169,106,0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(200,169,106,0.08);
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      color: var(--gold);
+      margin-bottom: 18px;
+      font-size: 1.3rem;
+    }
+
+    .metric {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metric:last-child {
+      border-bottom: none;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.7rem;
+      color: var(--white);
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+      color: var(--navy);
+    }
+
+    .section-dark {
+      background: var(--navy);
+    }
+
+    .section-title {
+      max-width: 780px;
+      margin-bottom: 46px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      margin-bottom: 16px;
+      color: inherit;
+    }
+
+    .section-title p {
+      color: inherit;
+      opacity: 0.78;
+      font-size: 1.05rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    .section-light .card {
+      background: var(--white);
+      border: 1px solid rgba(7,21,38,0.08);
+      box-shadow: 0 14px 34px rgba(7,21,38,0.07);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200,169,106,0.45);
+    }
+
+    .card .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(200,169,106,0.15);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: inherit;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: inherit;
+      opacity: 0.76;
+      font-size: 0.98rem;
+    }
+
+    .about-image {
+      min-height: 440px;
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(7,21,38,0.2), rgba(7,21,38,0.45)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80")
+        center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .text-block p {
+      color: inherit;
+      opacity: 0.82;
+      margin-bottom: 18px;
+      font-size: 1.03rem;
+    }
+
+    .highlight-box {
+      margin-top: 26px;
+      padding: 26px;
+      border-left: 4px solid var(--gold);
+      background: rgba(200,169,106,0.09);
+      border-radius: 18px;
+    }
+
+    .solutions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .solution-card {
+      padding: 26px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .solution-card h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .solution-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .audience-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .audience-item {
+      background: var(--white);
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(7,21,38,0.08);
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .governance {
+      background:
+        linear-gradient(rgba(7,21,38,0.94), rgba(7,21,38,0.96)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1800&q=80")
+        center/cover no-repeat;
+    }
+
+    .gov-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .gov-item {
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .gov-item strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .gov-item span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    form {
+      background: var(--white);
+      color: var(--navy);
+      padding: 34px;
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(7,21,38,0.1);
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(7,21,38,0.16);
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .contact-info {
+      background: var(--navy-2);
+      padding: 34px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-info h3 {
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .socials a {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: var(--dark);
+      padding: 50px 0 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    footer h3, footer h4 {
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    footer p, footer a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .copy {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      opacity: 0.8;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      z-index: 998;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hamburger {
+        display: block;
+      }
+
+      .menu {
+        position: fixed;
+        top: 78px;
+        right: -100%;
+        width: 82%;
+        height: calc(100vh - 78px);
+        background: var(--navy-2);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 34px;
+        transition: 0.3s;
+        border-left: 1px solid var(--border);
+      }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a {
+        font-size: 1.05rem;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .contact-box,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .solutions,
+      .audience-list,
+      .gov-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 140px 0 80px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        height: 70px;
+      }
+
+      .menu {
+        top: 70px;
+        height: calc(100vh - 70px);
+      }
+
+      .logo {
+        font-size: 1.22rem;
+        letter-spacing: 3px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .grid-3,
+      .solutions,
+      .audience-list,
+      .gov-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: 3px;
+      }
+
+      .hero-card {
+        padding: 26px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="logo">AR<span>DIRE</span></a>
+
+      <button class="hamburger" id="hamburger">☰</button>
+
+      <nav class="menu" id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#grupo">Empresas</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#governanca">Governança</a>
+        <a href="#contato" class="nav-btn">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Grupo empresarial financeiro</div>
+          <h1>AR<span>DIRE</span></h1>
+          <p>
+            Estruturação financeira, recebíveis, crédito, análise, cobrança e soluções empresariais com visão institucional, governança operacional e foco em segurança jurídica.
+          </p>
+
+          <div class="actions">
+            <a href="https://wa.me/5516981266908" target="_blank" class="btn btn-primary">Fale com um consultor</a>
+            <a href="#solucoes" class="btn btn-secondary">Conheça nossas soluções</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <h3>Atuação institucional</h3>
+
+          <div class="metric">
+            <strong>Recebíveis</strong>
+            <span>Estruturação, análise e organização de operações lastreadas em fluxos de pagamento.</span>
+          </div>
+
+          <div class="metric">
+            <strong>Governança</strong>
+            <span>Processos documentais, validação de crédito, critérios operacionais e controle de riscos.</span>
+          </div>
+
+          <div class="metric">
+            <strong>Soluções</strong>
+            <span>Apoio a empresas, parceiros comerciais, prestadores de serviço e operações estruturadas.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="sobre">
+      <div class="container grid-2">
+        <div class="text-block reveal">
+          <div class="section-title">
+            <div class="eyebrow">Sobre a ARDIRE</div>
+            <h2>Uma estrutura empresarial voltada a crédito, recebíveis e soluções financeiras.</h2>
+          </div>
+
+          <p>
+            A ARDIRE nasce com o propósito de atuar de forma organizada, técnica e institucional no mercado de estruturação financeira, análise de crédito, recebíveis, cobrança e apoio operacional a empresas e pessoas físicas.
+          </p>
+
+          <p>
+            O grupo reúne empresas com funções complementares, permitindo uma atuação segmentada, com maior clareza operacional, governança, controle documental e segurança nas relações comerciais.
+          </p>
+
+          <p>
+            A proposta da ARDIRE é oferecer soluções com postura profissional, linguagem técnica e processos bem definidos, evitando modelos informais, promessas inadequadas ou comunicação agressiva de crédito.
+          </p>
+
+          <div class="highlight-box">
+            A ARDIRE não se posiciona como instituição financeira. Sua atuação é estruturada conforme a natureza jurídica e operacional de cada empresa do grupo.
+          </div>
+        </div>
+
+        <div class="about-image reveal"></div>
+      </div>
+    </section>
+
+    <section class="section-dark" id="grupo">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Empresas do grupo</div>
+          <h2>Estrutura corporativa com funções definidas.</h2>
+          <p>
+            Cada empresa do grupo ARDIRE possui papel estratégico próprio, permitindo melhor organização, segregação operacional e clareza institucional.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">◆</div>
+            <h3>ARDIRE Capital</h3>
+            <p>
+              Estrutura voltada à securitização, aquisição e organização de recebíveis, operações estruturadas e gestão de ativos creditórios conforme o modelo jurídico aplicável.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">◇</div>
+            <h3>ARDIRE Soluções</h3>
+            <p>
+              Empresa dedicada ao suporte operacional, originação, análise, atendimento, cobrança, relacionamento comercial e soluções empresariais complementares.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">◈</div>
+            <h3>ARDIRE Participações</h3>
+            <p>
+              Estrutura societária voltada à participação, organização patrimonial, controle estratégico e desenvolvimento institucional do grupo empresarial.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark" id="solucoes">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Soluções</div>
+          <h2>Soluções financeiras estruturadas com critério técnico.</h2>
+          <p>
+            A ARDIRE atua na análise, organização e estruturação de soluções ligadas a crédito, recebíveis, cobrança e apoio empresarial.
+          </p>
+        </div>
+
+        <div class="solutions">
+          <div class="solution-card reveal">
+            <h3>Securitização de recebíveis</h3>
+            <p>Estruturação e organização de recebíveis com análise documental, lastro e controle operacional.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Antecipação de recebíveis</h3>
+            <p>Apoio em operações baseadas em fluxos comerciais, títulos, contratos e recebíveis recorrentes.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Crédito estruturado</h3>
+            <p>Modelos de crédito organizados com critérios de elegibilidade, documentação e análise de risco.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Análise de crédito</h3>
+            <p>Validação cadastral, perfil financeiro, documentação, histórico e capacidade de pagamento.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Cobrança e recuperação</h3>
+            <p>Processos de cobrança preventiva, acompanhamento de carteira, régua de contato e recuperação.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Soluções para empresas</h3>
+            <p>Apoio financeiro, operacional e documental para empresas que necessitam organizar fluxos de recebimento.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Estruturação financeira</h3>
+            <p>Organização de operações, contratos, fluxos, garantias, recebíveis e documentação de suporte.</p>
+          </div>
+
+          <div class="solution-card reveal">
+            <h3>Originação de operações</h3>
+            <p>Captação, pré-análise, triagem e encaminhamento técnico de oportunidades comerciais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="atendimento">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Para quem atendemos</div>
+          <h2>Atuação voltada a diferentes perfis empresariais e profissionais.</h2>
+          <p>
+            A ARDIRE busca atender operações com potencial econômico, documentação verificável e necessidade real de estruturação.
+          </p>
+        </div>
+
+        <div class="audience-list">
+          <div class="audience-item reveal">Empresas</div>
+          <div class="audience-item reveal">Prestadores de serviço</div>
+          <div class="audience-item reveal">Comerciantes</div>
+          <div class="audience-item reveal">Indústrias</div>
+          <div class="audience-item reveal">Profissionais autônomos</div>
+          <div class="audience-item reveal">Parceiros comerciais</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="governance" id="governanca">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Governança e segurança</div>
+          <h2>Operações exigem método, documentação e controle.</h2>
+          <p>
+            A ARDIRE prioriza processos com validação, rastreabilidade, análise documental e respeito à segurança das informações.
+          </p>
+        </div>
+
+        <div class="gov-list">
+          <div class="gov-item reveal">
+            <strong>Compliance</strong>
+            <span>Organização de critérios internos, controles, registros e boas práticas operacionais.</span>
+          </div>
+
+          <div class="gov-item reveal">
+            <strong>Análise documental</strong>
+            <span>Verificação de documentos, contratos, comprovantes, títulos e informações cadastrais.</span>
+          </div>
+
+          <div class="gov-item reveal">
+            <strong>Validação de crédito</strong>
+            <span>Avaliação técnica do perfil, histórico, capacidade de pagamento e risco da operação.</span>
+          </div>
+
+          <div class="gov-item reveal">
+            <strong>Segurança nas operações</strong>
+            <span>Processos desenhados para reduzir informalidade, inconsistências e riscos operacionais.</span>
+          </div>
+
+          <div class="gov-item reveal">
+            <strong>Sigilo e proteção de dados</strong>
+            <span>Tratamento responsável das informações comerciais, cadastrais e financeiras.</span>
+          </div>
+
+          <div class="gov-item reveal">
+            <strong>Estrutura jurídica e operacional</strong>
+            <span>Atuação conforme a função de cada empresa do grupo, com segregação e clareza institucional.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="contato">
+      <div class="container">
+        <div class="section-title reveal">
+          <div class="eyebrow">Contato</div>
+          <h2>Fale com a ARDIRE.</h2>
+          <p>
+            Entre em contato para apresentar sua demanda, operação ou oportunidade comercial.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <form class="reveal" onsubmit="sendEmail(event)">
+            <label>Nome</label>
+            <input type="text" id="nome" placeholder="Seu nome" required />
+
+            <label>Telefone</label>
+            <input type="tel" id="telefone" placeholder="Seu telefone" required />
+
+            <label>E-mail</label>
+            <input type="email" id="email" placeholder="Seu e-mail" required />
+
+            <label>Mensagem</label>
+            <textarea id="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+
+            <button type="submit" class="btn btn-primary" style="border:none;width:100%;">
+              Enviar por e-mail
+            </button>
+          </form>
+
+          <div class="contact-info reveal">
+            <h3>Informações institucionais</h3>
+
+            <p><strong>WhatsApp:</strong> (16) 98126-6908</p>
+            <p><strong>E-mail:</strong> [INSERIR E-MAIL]</p>
+            <p><strong>Endereço:</strong> [INSERIR ENDEREÇO]</p>
+            <p><strong>Domínio:</strong> [INSERIR DOMÍNIO]</p>
+
+            <div class="actions" style="margin-top:24px;">
+              <a href="https://wa.me/5516981266908" target="_blank" class="btn btn-primary">
+                Chamar no WhatsApp
+              </a>
+
+              <a href="mailto:[INSERIR E-MAIL]" class="btn btn-secondary">
+                Enviar e-mail
+              </a>
+            </div>
+
+            <div class="socials">
+              <a href="[INSERIR LINK]" target="_blank">Instagram</a>
+              <a href="[INSERIR LINK]" target="_blank">LinkedIn</a>
+              <a href="https://wa.me/5516981266908" target="_blank">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ARDIRE</h3>
+          <p>
+            Grupo empresarial com atuação em soluções financeiras, recebíveis, análise, estruturação, cobrança e apoio operacional.
+          </p>
+        </div>
+
+        <div>
+          <h4>Navegação</h4>
+          <a href="#inicio">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#grupo">Empresas do grupo</a>
+          <a href="#solucoes">Soluções</a>
+          <a href="#governanca">Governança</a>
+          <a href="#contato">Contato</a>
+        </div>
+
+        <div>
+          <h4>Contato</h4>
+          <a href="https://wa.me/5516981266908" target="_blank">WhatsApp: (16) 98126-6908</a>
+          <a href="mailto:[INSERIR E-MAIL]">[INSERIR E-MAIL]</a>
+          <a href="[INSERIR LINK]" target="_blank">Instagram</a>
+          <a href="[INSERIR LINK]" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="copy">
+        © 2026 ARDIRE. Todos os direitos reservados. Este site possui caráter institucional e não representa promessa de aprovação de crédito.
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5516981266908" target="_blank" class="whatsapp-float">☎</a>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("active");
+      });
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      reveals.forEach(item => {
+        const windowHeight = window.innerHeight;
+        const elementTop = item.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+          item.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    function sendEmail(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const destino = "[INSERIR E-MAIL]";
+      const assunto = "Contato pelo site ARDIRE";
+      const corpo =
+        "Nome: " + nome + "%0D%0A" +
+        "Telefone: " + telefone + "%0D%0A" +
+        "E-mail: " + email + "%0D%0A%0D%0A" +
+        "Mensagem:%0D%0A" + mensagem;
+
+      window.location.href = "mailto:" + destino + "?subject=" + assunto + "&body=" + corpo;
+    }
+  </script>
+
+</body>
+</html>
