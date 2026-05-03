@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDIRE Capital</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #071526;
+      color: white;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(7,21,38,.94), rgba(7,21,38,.55)),
+        url("fundo-ardire.jpg") center/cover no-repeat;
+      padding: 100px 5%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* TEXTO */
+    .hero-ardire {
+      font-size: 96px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      line-height: .85;
+      text-transform: uppercase;
+
+      background: linear-gradient(180deg,#f5f6f7,#c8cdd4,#6f7781,#ffffff);
+      -webkit-background-clip: text;
+      color: transparent;
+
+      text-shadow:
+        1px 1px 0 #fff,
+        2px 2px 0 #7d8791,
+        5px 8px 14px rgba(0,0,0,.75);
+    }
+
+    .hero-capital {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 38px;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      background: linear-gradient(180deg,#ffe39a,#d5ad55,#8f651f,#f2d98a);
+      -webkit-background-clip: text;
+      color: transparent;
+
+      text-shadow:
+        1px 1px 0 #f3d78a,
+        2px 2px 0 #7a551b,
+        5px 8px 14px rgba(0,0,0,.72);
+    }
+
+    .hero-subtitle {
+      margin-top: 40px;
+      font-size: 20px;
+      letter-spacing: 6px;
+      color: #c7a46b;
+    }
+
+    .desc {
+      margin-top: 30px;
+      color: #cbd5e1;
+      max-width: 600px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 30px;
+      margin-right: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,#d5ad55,#f0d489);
+      color: #071526;
+    }
+
+    .btn-secondary {
+      border: 1px solid #d5ad55;
+      color: #d5ad55;
+      background: transparent;
+    }
+
+    /* 🔥 VÍDEO INSTITUCIONAL */
+    .video-box {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* overlay escuro institucional */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(7,21,38,.2),
+        rgba(7,21,38,.6)
+      );
+      pointer-events: none;
+    }
+
+    /* botão play */
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(213,173,85,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #071526;
+      cursor: pointer;
+    }
+
+    @media(max-width:900px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-grid">
+
+    <!-- ESQUERDA -->
+    <div>
+
+      <div class="hero-ardire" id="ardireRef">ARDIRE</div>
+
+      <div class="hero-capital" id="capitalRef">
+        <span>C</span><span>A</span><span>P</span><span>I</span><span>T</span><span>A</span><span>L</span>
+      </div>
+
+      <div class="hero-subtitle">
+        SECURITIZAÇÃO E ESTRUTURAÇÃO<br>
+        DE ATIVOS DE CRÉDITO
+      </div>
+
+      <p class="desc">
+        Atuação institucional em recebíveis, estruturação financeira,
+        análise de crédito, cobrança e soluções empresariais com governança.
+      </p>
+
+      <div class="buttons">
+        <span class="btn btn-primary">Fale com um consultor</span>
+        <span class="btn btn-secondary">Conheça nossos produtos</span>
+      </div>
+
+    </div>
+
+    <!-- 🔥 VÍDEO LOCAL -->
+    <div class="video-box">
+
+      <video id="videoInstitucional" muted loop>
+        <!-- COLOQUE SEU VIDEO AQUI -->
+        <source src="video-ardire.mp4" type="video/mp4">
+      </video>
+
+      <div class="video-overlay"></div>
+
+      <div class="play-btn" onclick="playVideo()">▶</div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+function ajustarLarguraCapital() {
+  const ardire = document.getElementById("ardireRef");
+  const capital = document.getElementById("capitalRef");
+  capital.style.width = ardire.offsetWidth + "px";
+}
+
+function playVideo() {
+  const video = document.getElementById("videoInstitucional");
+  video.play();
+  document.querySelector(".play-btn").style.display = "none";
+}
+
+window.onload = ajustarLarguraCapital;
+window.onresize = ajustarLarguraCapital;
+</script>
+
+</body>
+</html>
